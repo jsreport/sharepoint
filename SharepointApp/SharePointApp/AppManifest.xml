@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
+<App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
+     Name="jsreport"
+     ProductID="{77cbfda2-9a55-461c-a7fb-55fa86a8c6b8}"
+     Version="1.25.0.0"
+     SharePointMinVersion="16.0.0.0"
+>
+  <Properties>
+    <StartPage>https://sharepointapp.jsreport.net?{StandardTokens}</StartPage>
+    <InstalledEventEndpoint>https://sharepointapp.jsreport.net/Services/RemoteEventReceiver.svc</InstalledEventEndpoint>
+    <UninstallingEventEndpoint>https://sharepointapp.jsreport.net/Services/RemoteEventReceiver.svc</UninstallingEventEndpoint>
+    <Title>jsreport</Title>
+  </Properties>
+
+  <AppPrincipal>
+    <RemoteWebApplication ClientId="fd8b491d-b0dc-4065-9df8-461962a6a3f0" />
+  </AppPrincipal>
+  <AppPermissionRequests>
+    <AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="Manage" />
+    <AppPermissionRequest Scope="http://sharepoint/content/sitecollection/web" Right="Manage" />
+  </AppPermissionRequests>
+</App>

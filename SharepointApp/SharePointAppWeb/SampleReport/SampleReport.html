@@ -1,0 +1,53 @@
+﻿<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//code.highcharts.com/highcharts.js"></script>
+<h1 style="background: #1ba1e2;color: #fff;font-weight: normal;margin: 0 auto;padding: 10px;text-align: center;">
+    jsreport - ultimate reporting solution
+</h1>
+<div>
+    <p>
+        Use just html, javascript to create the most shiny end flexible reports from sharepoint.
+    </p>
+    <p>
+        Checkout the left menu with custom script loading data from sharepoint lists. Then browse
+        the following code using jsrender templating engine together with jquery and highcharts library
+        to render the report.
+    </p>
+</div>
+<div id="container" style="height: 400px"></div>
+<hr />
+<table>
+    <thead>
+        <tr>
+            <th>List title</th>
+            <th>Items Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for #data.value ~all=#data.value}}
+        <tr>
+            <td>{{:Title}}</td>
+            <td>{{:~calculatePercents(~all, #data)}}</td>
+        </tr>
+        {{/for}}
+    </tbody>
+</table>
+<script>
+
+$(function () {
+
+    var data = [];
+    {{for #data.value}}
+        data.push(["{{:Title}}", {{:ItemCount}}]);
+    {{/for}}
+
+    $('#container').highcharts({
+        title: null,
+        series: [{
+            animation: false,
+            type: 'pie',
+            data: data
+        }]
+    });
+});
+
+</script>
