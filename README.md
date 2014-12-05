@@ -2,6 +2,8 @@
 
 This repository contains jsreport sharepoint extension and sharepoint provider hosted application used for integrating both platforms.
 
+See the jsreport SharePoint quick start in [Reports in Sharepoint](http://jsreport.net/learn/reports-in-sharepoint) article.
+
 
 ##License
 Copyright (c) 2014 Jan Blaha
