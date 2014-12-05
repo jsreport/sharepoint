@@ -12,7 +12,7 @@
 </head>
 <body>
     <script>
-        window.parent.postMessage({ command: "SessionId", value: "@ViewBag.SessionId" }, "*");
+        window.parent.postMessage("SessionId=@(ViewBag.SessionId)", "*");
     </script>
 </body>
 </html>

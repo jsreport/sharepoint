@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Web.Mvc;
 using Microsoft.SharePoint.Client;
-using SharePointApp2Web;
 using SharePointAppWeb.Filters;
 using SharePointAppWeb.Services;
 
@@ -14,17 +13,20 @@ namespace SharePointAppWeb.Controllers
         public ActionResult Index()
         {
             Trace.WriteLine("Trying to obtain a token");
-            if (Request.QueryString.Get("SessionId") == null)
-            {
-                return View();
-            }
 
             SharePointContext spContext = SharePointContextProvider.Current.GetSharePointContext(HttpContext);
+
+            if (Request.QueryString.Get("SessionId") == null)
+            {
+                ViewBag.SPHostUrl = spContext.SPHostUrl;
+                return View();
+            }
 
             using (ClientContext clientContext = spContext.CreateUserClientContextForSPHost())
             {
                 if (clientContext == null)
                 {
+                    Trace.WriteLine("Not able to obtain client context.");
                     throw new Exception("Unable to create Client Context");
                 }
 

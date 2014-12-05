@@ -28,8 +28,8 @@
 
     function receiveMessage(event) {
 
-        if (event.data.command == "SessionId") {
-            authToken = event.data.value;
+        if (event.data.indexOf("SessionId") !== -1) {
+            authToken = event.data.split("=")[1];
 
             (function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
@@ -53,7 +53,7 @@
         waitFor(function() {
             return window.jQuery;
         }, function() {
-            var src = _spPageContextInfo.siteServerRelativeUrl;
+            var src = window.location.protocol + "//" + window.location.host + _spPageContextInfo.siteServerRelativeUrl;
             src += "/_layouts/15/appredirect.aspx?client_id=$$$clientId&redirect_uri=";
             src += "https://sharepointapp.jsreport.net%3FSPHostUrl=";
             src += encodeURIComponent(window.location.protocol + "//" + window.location.host + _spPageContextInfo.siteServerRelativeUrl);

@@ -25,7 +25,7 @@
                     $(".csrHiddenField").closest("tr").hide();
 
                     if (!$("#jsreportRenderCommand").length && ($("#displayFormMark").length || $("#editFormMark").length)) {
-                        var imageCss = "style='background-image: url(https://sharepointapp.jsreport.net/Content/jsreport16x16.png);background-repeat: no-repeat;background-position: left 5px center;padding-left:21px'";
+                        var imageCss = "style='background-image: url(https://sharepointapp.jsreport.net/Content/jsreport16x16.png);background-repeat: no-repeat;background-position: left 5px center;padding-left:26px'";
                         var text = $("#displayFormMark").length ? "Render report" : "Open editor";
                         var onClick = $("#displayFormMark").length ? "jsreportTemplates.render()" : "jsreportTemplates.openEditor()";
                         var jsreportButton = "<td nowrap='nowrap' class='ms-toolbar'><table width='100%' cellspacing='0' cellpadding='0'><tbody><tr>"
@@ -46,9 +46,9 @@
     function render(success, error) {
         jsreportShared.showWait();
 
-        jsreportShared.ensureInitialized(function() {
+        jsreportShared.ensureInitialized(function () {
+            jsreportShared.closeWait();
             getCurrentItem(function(item) {
-                jsreportShared.closeWait();
 
                 jsreport.render(JSON.parse(item.get_item("Template") || "{}"));
 
@@ -80,10 +80,10 @@
     function openEditor() {
         jsreportShared.showWait();
 
-        jsreportShared.ensureInitialized(function() {
-            var template = JSON.parse($("[title='Template']").val() || "{}");
-            
+        jsreportShared.ensureInitialized(function () {
             jsreportShared.closeWait();
+
+            var template = JSON.parse($("[title='Template']").val() || "{}");
             
             jsreport.openEditor(template, { fetch: false }, function () {
                 $("[title='Template']").val(JSON.stringify(template));

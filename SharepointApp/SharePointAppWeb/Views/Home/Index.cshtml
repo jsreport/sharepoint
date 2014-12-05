@@ -1,7 +1,55 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@*<h1 class="ms-accentText">Main content</h1>*@
 
-<div class="jumbotron">
-    <h1>Everything is fine</h1>
+<style>
+    a.tile, a.tile:visited {
+        width: 150px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        display: inline-block;
+        color: white;
+        vertical-align: middle;
+        cursor: pointer;
+        margin: 20px
+    }
+
+     a.bg-green {
+        background-color: #60a917 !important;
+    }
+
+    a.bg-lightRed {
+        background-color: #ff2d19  !important;
+    }
+     
+    a.bg-lightBlue {
+        background-color: #4390df   !important;
+    }
+
+    a.tile:hover, a.tile:active{
+        background-color: gray !important;
+        text-decoration: none !important;
+        color: white !important
+    }
+</style>
+
+<div >
+    <h2>You are ready for amazing reports!</h2>
+    <span>
+        We have created for you new SharePoint list <a href="@(ViewBag.SPHostUrl)_layouts/15/start.aspx#/Lists/jsreport Templates/AllItems.aspx">jsreport Templates</a>.
+        You can use this list to create report templates or render reports.
+    </span>
+    
+    <div>
+        <a class="tile bg-lightBlue" target="_blank" href="@(ViewBag.SPHostUrl)_layouts/15/start.aspx#/Lists/jsreport Templates/AllItems.aspx">
+            Templates list
+        </a>
+
+        <a class="tile bg-lightRed" target="_blank" href="http://jsreport.net/learn/reports-in-sharepoint">
+            Quick start
+        </a>
+
+        <a class="tile bg-green" target="_blank"  href="http://jsreport.net/about">
+            Contact us
+        </a>
+    </div>
 </div>
